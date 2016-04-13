@@ -128,7 +128,7 @@ ui <- dashboardPage(
                                                      choices = c("yes", "no"),
                                                      selected = "no"), width = 3)),
                                  fluidRow(
-                                     plotOutput("prescriptive_plot", width = "100%", height = "500px")
+                                     box(plotOutput("prescriptive_plot", width = "100%", height = "500px"), width = 12)
                                  )
                         )
                     )
@@ -243,7 +243,7 @@ server <- function(input, output){
         names(impt) <- rownames(an)[-nrow(an)]
         
         n <- names(impt)
-        
+        #str(impt);print(rownames(data.frame(impt)))
         ggplot(data = data.frame(impt), aes(n, impt)) +
             geom_bar(stat = "identity") +
             xlab("Variables") +
